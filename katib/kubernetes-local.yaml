@@ -1,0 +1,56 @@
+apiVersion: "kubeflow.org/v1alpha3"
+kind: Experiment
+metadata:
+  namespace: evaluation
+  name: katib-example
+spec:
+  parallelTrialCount: 10
+  maxTrialCount: 20
+  maxFailedTrialCount: 3
+  objective:
+    type: maximize
+    goal: 0.99
+    objectiveMetricName: val_acc
+  algorithm:
+    algorithmName: random
+  parameters:
+    - name: --units
+      parameterType: int
+      feasibleSpace:
+        min: "0"
+        max: "1024"
+    - name: --dropout
+      parameterType: double
+      feasibleSpace:
+        min: "0"
+        max: "1"
+    - name: --optimizer
+      parameterType: categorical
+      feasibleSpace:
+        list:
+        - "adam"
+        - "sgd"
+  trialTemplate:
+    goTemplate:
+        rawTemplate: |-
+          apiVersion: batch/v1
+          kind: Job
+          metadata:
+            name: {{.Trial}}
+            namespace: {{.NameSpace}}
+          spec:
+            template:
+              spec:
+                restartPolicy: Never
+                containers:
+                - name: {{.Trial}}
+                  image: gaocegege/katib-tf-example:v1.0.0
+                  imagePullPolicy: Always
+                  command:
+                  - "python"
+                  - "/katib-local.py"
+                  {{- with .HyperParameters}}
+                  {{- range .}}
+                  - "{{.Name}}={{.Value}}"
+                  {{- end}}
+                  {{- end}}

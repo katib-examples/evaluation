@@ -36,11 +36,12 @@ def train_model():
   logdir = os.path.join("logs", datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
   tensorboard_callback = tf.keras.callbacks.TensorBoard(logdir, histogram_freq=1)
 
-  model.fit(x=x_train, 
+  history = model.fit(x=x_train, 
             y=y_train, 
-            epochs=5, 
+            epochs=1, 
             validation_data=(x_test, y_test), 
             callbacks=[tensorboard_callback])
+  print("val_acc=", history.history['val_acc'][0])
 
 if __name__ == "__main__":
   train_model()
