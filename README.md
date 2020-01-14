@@ -22,5 +22,5 @@ kubectl apply -f ./kubernetes.yaml
 ```
 cd katib
 docker build -t gaocegege/katib-tf-example:v1.0.0 .
-kubectl apply -f ./kubernetes.yaml
+kubectl apply -f ./kubernetes-local.yaml
 ```
