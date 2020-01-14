@@ -5,7 +5,7 @@ metadata:
   name: katib-example
 spec:
   parallelTrialCount: 10
-  maxTrialCount: 20
+  maxTrialCount: 10
   maxFailedTrialCount: 3
   objective:
     type: maximize
