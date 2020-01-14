@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: optuna
+  namespace: evaluation
+  labels:
+    app: optuna
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: optuna
+  template:
+    metadata:
+      labels:
+        app: optuna
+    spec:
+      containers:
+      - name: optuna
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
