@@ -1,15 +1,11 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
   name: optuna
   namespace: evaluation
   labels:
     app: optuna
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: optuna
   template:
     metadata:
       labels:
@@ -18,5 +14,8 @@ spec:
       containers:
       - name: optuna
         image: gaocegege/optuna-tf-example:v1.0.0
-        ports:
-        - containerPort: 80
+        command:
+        - python
+        - optuna-local.py
+        - "10"
+      restartPolicy: OnFailure
