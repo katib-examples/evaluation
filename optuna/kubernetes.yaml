@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: optuna
-        image: nginx:1.7.9
+        image: gaocegege/optuna-tf-example:v1.0.0
         ports:
         - containerPort: 80

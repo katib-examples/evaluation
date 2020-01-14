@@ -4,6 +4,6 @@ WORKDIR /usr/src/
 
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple optuna
 
-COPY optuna-main.py .
+COPY optuna-local.py .
 
-CMD ["python", "optuna-main.py"]
+CMD ["python", "optuna-local.py", "2"]
