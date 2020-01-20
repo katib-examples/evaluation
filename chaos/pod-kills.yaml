@@ -1,0 +1,17 @@
+apiVersion: pingcap.com/v1alpha1
+kind: PodChaos
+metadata:
+  name: pod-kill
+  namespace: chaos-testing
+spec:
+  action: pod-kill
+  duration: 5s
+  selector:
+    namespaces:
+      - evaluation
+    labelSelectors:
+      chaos: enabled
+  scheduler:
+    cron: "@every 2m"
+  mode: fixed-percent
+  value: "30"

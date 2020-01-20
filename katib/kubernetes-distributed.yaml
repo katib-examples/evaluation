@@ -6,7 +6,7 @@ metadata:
 spec:
   parallelTrialCount: 10
   maxTrialCount: 20
-  maxFailedTrialCount: 3
+  maxFailedTrialCount: 10
   objective:
     type: maximize
     goal: 0.99
@@ -44,6 +44,9 @@ spec:
               replicas: 1
               restartPolicy: Never
               template:
+                metadata:
+                  labels:
+                    chaos: enabled
                 spec:
                   containers:
                     - name: tensorflow
@@ -51,6 +54,8 @@ spec:
                       command:
                         - "python"
                         - "/katib-ps-worker.py"
+                        - "--train_steps"
+                        - "5000"
                         {{- with .HyperParameters}}
                         {{- range .}}
                         - "{{.Name}}={{.Value}}"
@@ -60,6 +65,9 @@ spec:
               replicas: 2
               restartPolicy: Never
               template:
+                metadata:
+                  labels:
+                    chaos: enabled
                 spec:
                   containers:
                     - name: tensorflow
@@ -67,6 +75,8 @@ spec:
                       command:
                         - "python"
                         - "/katib-ps-worker.py"
+                        - "--train_steps"
+                        - "5000"
                         {{- with .HyperParameters}}
                         {{- range .}}
                         - "{{.Name}}={{.Value}}"
