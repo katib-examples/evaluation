@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tf-operator
+  namespace: kubeflow
+  labels:
+    app: kubeflow
+spec:
+  selector:
+    matchLabels:
+      app: kubeflow
+  template:
+    metadata:
+      labels:
+        app: kubeflow
+    spec:
+      serviceAccount: tf-operator
+      containers:
+      - name: kubeflow
+        image: gaocegege/tf-operator:v1.0.0
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: tf-operator
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  - serviceaccounts
+  - services
+  - secrets
+  - events
+  - namespaces
+  - endpoints
+  verbs:
+  - "*"
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - pods/log
+  - pods/status
+  verbs:
+  - "*"
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - "*"
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  - cronjobs
+  verbs:
+  - "*"
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - create
+  - get
+- apiGroups:
+  - admissionregistration.k8s.io
+  resources:
+  - validatingwebhookconfigurations
+  - mutatingwebhookconfigurations
+  verbs:
+  - '*'
+- apiGroups:
+  - kubeflow.org
+  resources:
+  - experiments
+  - experiments/status
+  - trials
+  - trials/status
+  - suggestions
+  - suggestions/status
+  verbs:
+  - "*"
+- apiGroups:
+  - kubeflow.org
+  resources:
+  - tfjobs
+  - pytorchjobs
+  verbs:
+  - "*"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tf-operator
+  namespace: kubeflow
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: tf-operator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: tf-operator
+subjects:
+- kind: ServiceAccount
+  name: tf-operator
+  namespace: kubeflow

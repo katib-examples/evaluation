@@ -5,12 +5,12 @@ metadata:
   name: katib-distributed-example
 spec:
   parallelTrialCount: 10
-  maxTrialCount: 20
-  maxFailedTrialCount: 10
+  maxTrialCount: 150
+  maxFailedTrialCount: 150
   objective:
-    type: maximize
-    goal: 0.99
-    objectiveMetricName: val_acc
+    type: minimize
+    goal: 0
+    objectiveMetricName: entropy
   algorithm:
     algorithmName: random
   parameters:
@@ -51,6 +51,13 @@ spec:
                   containers:
                     - name: tensorflow
                       image: gaocegege/katib-tf-example:v1.0.0
+                      resources:
+                        limit:
+                          cpu: 500m
+                          memory: 500Mi
+                        requests:
+                          cpu: 100m
+                          memory: 100Mi
                       command:
                         - "python"
                         - "/katib-ps-worker.py"
@@ -72,6 +79,13 @@ spec:
                   containers:
                     - name: tensorflow
                       image: gaocegege/katib-tf-example:v1.0.0
+                      resources:
+                        limit:
+                          cpu: 500m
+                          memory: 500Mi
+                        requests:
+                          cpu: 100m
+                          memory: 100Mi
                       command:
                         - "python"
                         - "/katib-ps-worker.py"

@@ -14,4 +14,4 @@ spec:
   scheduler:
     cron: "@every 2m"
   mode: fixed-percent
-  value: "30"
+  value: "5"
