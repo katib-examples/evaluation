@@ -1,0 +1,1554 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:18Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-48v7t5zz",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4886511",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-48v7t5zz",
+                "uid": "1f21c79d-040c-4903-a39f-017b266c072f"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "173"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.3967233745211589"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-48v7t5zz\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=173\"\n              - \"--dropout=0.3967233745211589\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=173\"\n              - \"--dropout=0.3967233745211589\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "completionTime": "2020-01-27T08:49:42Z",
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:18Z",
+                        "lastUpdateTime": "2020-01-27T08:49:18Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:42Z",
+                        "lastUpdateTime": "2020-01-27T08:49:42Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "False",
+                        "type": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:42Z",
+                        "lastUpdateTime": "2020-01-27T08:49:42Z",
+                        "message": "Trial has failed",
+                        "reason": "TrialFailed",
+                        "status": "True",
+                        "type": "Failed"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:18Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:47Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-4ld4pf5w",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4887049",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-4ld4pf5w",
+                "uid": "0e3c7fe1-300e-4b5a-8f29-9579a1a4b2de"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "843"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.6545908551222693"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-4ld4pf5w\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=843\"\n              - \"--dropout=0.6545908551222693\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=843\"\n              - \"--dropout=0.6545908551222693\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:50Z",
+                        "lastUpdateTime": "2020-01-27T08:49:50Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:50:06Z",
+                        "lastUpdateTime": "2020-01-27T08:50:06Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "True",
+                        "type": "Running"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:50Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:47Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-7w9h78qm",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4887053",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-7w9h78qm",
+                "uid": "df647e45-8226-4f43-b5ad-ef181b62ad39"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "125"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.09639148711207912"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-7w9h78qm\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=125\"\n              - \"--dropout=0.09639148711207912\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=125\"\n              - \"--dropout=0.09639148711207912\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:50Z",
+                        "lastUpdateTime": "2020-01-27T08:49:50Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:50:06Z",
+                        "lastUpdateTime": "2020-01-27T08:50:06Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "True",
+                        "type": "Running"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:50Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:51Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-8cnk9q9h",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4887071",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-8cnk9q9h",
+                "uid": "0aac16cc-bd31-468c-8660-3bc552ad5d34"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "259"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.0038782984085858896"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-8cnk9q9h\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=259\"\n              - \"--dropout=0.0038782984085858896\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=259\"\n              - \"--dropout=0.0038782984085858896\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:55Z",
+                        "lastUpdateTime": "2020-01-27T08:49:55Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:50:08Z",
+                        "lastUpdateTime": "2020-01-27T08:50:08Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "True",
+                        "type": "Running"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:55Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:18Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-8fq4nj5s",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4886789",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-8fq4nj5s",
+                "uid": "392c11cc-982f-4d2e-a182-e36f076de8b3"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "494"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.27140841034274543"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-8fq4nj5s\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=494\"\n              - \"--dropout=0.27140841034274543\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=494\"\n              - \"--dropout=0.27140841034274543\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "completionTime": "2020-01-27T08:49:51Z",
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:22Z",
+                        "lastUpdateTime": "2020-01-27T08:49:22Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:51Z",
+                        "lastUpdateTime": "2020-01-27T08:49:51Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "False",
+                        "type": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:51Z",
+                        "lastUpdateTime": "2020-01-27T08:49:51Z",
+                        "message": "Trial has failed",
+                        "reason": "TrialFailed",
+                        "status": "True",
+                        "type": "Failed"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:22Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:46Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-8trwkx65",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4887007",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-8trwkx65",
+                "uid": "c1059e1f-2862-4b69-ad48-e6e5f1624d0c"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "634"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.6139353607073406"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-8trwkx65\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=634\"\n              - \"--dropout=0.6139353607073406\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=634\"\n              - \"--dropout=0.6139353607073406\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:50Z",
+                        "lastUpdateTime": "2020-01-27T08:49:50Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:50:04Z",
+                        "lastUpdateTime": "2020-01-27T08:50:04Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "True",
+                        "type": "Running"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:50Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:18Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-9bgkx9rj",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4886622",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-9bgkx9rj",
+                "uid": "55e7791a-c1e9-453a-9910-c70c01281c49"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "848"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.24335300599665954"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "sgd"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-9bgkx9rj\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=848\"\n              - \"--dropout=0.24335300599665954\"\n              - \"--optimizer=sgd\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=848\"\n              - \"--dropout=0.24335300599665954\"\n              - \"--optimizer=sgd\""
+            },
+            "status": {
+                "completionTime": "2020-01-27T08:49:46Z",
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:19Z",
+                        "lastUpdateTime": "2020-01-27T08:49:19Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:46Z",
+                        "lastUpdateTime": "2020-01-27T08:49:46Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "False",
+                        "type": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:46Z",
+                        "lastUpdateTime": "2020-01-27T08:49:46Z",
+                        "message": "Trial has failed",
+                        "reason": "TrialFailed",
+                        "status": "True",
+                        "type": "Failed"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:19Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:42Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-cl87m5tl",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4886793",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-cl87m5tl",
+                "uid": "b509a784-4cc4-49b2-b325-01861c7acc78"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "224"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.4464859590150335"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "sgd"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-cl87m5tl\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=224\"\n              - \"--dropout=0.4464859590150335\"\n              - \"--optimizer=sgd\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=224\"\n              - \"--dropout=0.4464859590150335\"\n              - \"--optimizer=sgd\""
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:42Z",
+                        "lastUpdateTime": "2020-01-27T08:49:42Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:51Z",
+                        "lastUpdateTime": "2020-01-27T08:49:51Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "True",
+                        "type": "Running"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:42Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:18Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-d4ckqlqb",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4886602",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-d4ckqlqb",
+                "uid": "efbe7688-6e93-4c04-8309-0b48eef07781"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "555"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.7945353844310358"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-d4ckqlqb\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=555\"\n              - \"--dropout=0.7945353844310358\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=555\"\n              - \"--dropout=0.7945353844310358\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "completionTime": "2020-01-27T08:49:45Z",
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:20Z",
+                        "lastUpdateTime": "2020-01-27T08:49:20Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:45Z",
+                        "lastUpdateTime": "2020-01-27T08:49:45Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "False",
+                        "type": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:45Z",
+                        "lastUpdateTime": "2020-01-27T08:49:45Z",
+                        "message": "Trial has failed",
+                        "reason": "TrialFailed",
+                        "status": "True",
+                        "type": "Failed"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:20Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:47Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-f69sgn2x",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4887055",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-f69sgn2x",
+                "uid": "e5d75869-e8ad-44c5-97be-4c47a25c0486"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "694"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.39654766876065806"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-f69sgn2x\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=694\"\n              - \"--dropout=0.39654766876065806\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=694\"\n              - \"--dropout=0.39654766876065806\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:50Z",
+                        "lastUpdateTime": "2020-01-27T08:49:50Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:50:06Z",
+                        "lastUpdateTime": "2020-01-27T08:50:06Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "True",
+                        "type": "Running"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:50Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:19Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-jqkkkhdv",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4887143",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-jqkkkhdv",
+                "uid": "c6a117e1-9f4c-4d46-ab8a-71c93e551ecf"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "484"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.35384199533831884"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "sgd"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-jqkkkhdv\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=484\"\n              - \"--dropout=0.35384199533831884\"\n              - \"--optimizer=sgd\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=484\"\n              - \"--dropout=0.35384199533831884\"\n              - \"--optimizer=sgd\""
+            },
+            "status": {
+                "completionTime": "2020-01-27T08:50:14Z",
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:22Z",
+                        "lastUpdateTime": "2020-01-27T08:49:22Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:50:14Z",
+                        "lastUpdateTime": "2020-01-27T08:50:14Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "False",
+                        "type": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:50:14Z",
+                        "lastUpdateTime": "2020-01-27T08:50:14Z",
+                        "message": "Trial has failed",
+                        "reason": "TrialFailed",
+                        "status": "True",
+                        "type": "Failed"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:22Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:47Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-ksslqzjq",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4887046",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-ksslqzjq",
+                "uid": "16037df1-3bdf-4853-a432-e26714fc1031"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "665"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.1999897254927563"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-ksslqzjq\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=665\"\n              - \"--dropout=0.1999897254927563\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=665\"\n              - \"--dropout=0.1999897254927563\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:50Z",
+                        "lastUpdateTime": "2020-01-27T08:49:50Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:50:06Z",
+                        "lastUpdateTime": "2020-01-27T08:50:06Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "True",
+                        "type": "Running"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:50Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:18Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-ldg4nmpp",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4886612",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-ldg4nmpp",
+                "uid": "56115fbe-b386-4913-a5a8-dbd57823dd6a"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "695"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.26170806262646795"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "sgd"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-ldg4nmpp\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=695\"\n              - \"--dropout=0.26170806262646795\"\n              - \"--optimizer=sgd\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=695\"\n              - \"--dropout=0.26170806262646795\"\n              - \"--optimizer=sgd\""
+            },
+            "status": {
+                "completionTime": "2020-01-27T08:49:45Z",
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:21Z",
+                        "lastUpdateTime": "2020-01-27T08:49:21Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:45Z",
+                        "lastUpdateTime": "2020-01-27T08:49:45Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "False",
+                        "type": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:45Z",
+                        "lastUpdateTime": "2020-01-27T08:49:45Z",
+                        "message": "Trial has failed",
+                        "reason": "TrialFailed",
+                        "status": "True",
+                        "type": "Failed"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:21Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:19Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-qxj8qmhq",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4886614",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-qxj8qmhq",
+                "uid": "f4645ed7-8cee-4443-83eb-354ad48671bf"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "570"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.6094395119884152"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "sgd"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-qxj8qmhq\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=570\"\n              - \"--dropout=0.6094395119884152\"\n              - \"--optimizer=sgd\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=570\"\n              - \"--dropout=0.6094395119884152\"\n              - \"--optimizer=sgd\""
+            },
+            "status": {
+                "completionTime": "2020-01-27T08:49:45Z",
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:22Z",
+                        "lastUpdateTime": "2020-01-27T08:49:22Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:45Z",
+                        "lastUpdateTime": "2020-01-27T08:49:45Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "False",
+                        "type": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:45Z",
+                        "lastUpdateTime": "2020-01-27T08:49:45Z",
+                        "message": "Trial has failed",
+                        "reason": "TrialFailed",
+                        "status": "True",
+                        "type": "Failed"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:22Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:18Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-srlr9pfr",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4886529",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-srlr9pfr",
+                "uid": "068215f8-398b-46d1-82aa-bf367352c86c"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "922"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.2756069014410413"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-srlr9pfr\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=922\"\n              - \"--dropout=0.2756069014410413\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=922\"\n              - \"--dropout=0.2756069014410413\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "completionTime": "2020-01-27T08:49:42Z",
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:18Z",
+                        "lastUpdateTime": "2020-01-27T08:49:18Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:42Z",
+                        "lastUpdateTime": "2020-01-27T08:49:42Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "False",
+                        "type": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:42Z",
+                        "lastUpdateTime": "2020-01-27T08:49:42Z",
+                        "message": "Trial has failed",
+                        "reason": "TrialFailed",
+                        "status": "True",
+                        "type": "Failed"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:18Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:18Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-twx4x78v",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4886613",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-twx4x78v",
+                "uid": "c5f70942-4b04-4d05-9bde-b666fccc5799"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "520"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.8641863468339781"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-twx4x78v\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=520\"\n              - \"--dropout=0.8641863468339781\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=520\"\n              - \"--dropout=0.8641863468339781\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "completionTime": "2020-01-27T08:49:45Z",
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:22Z",
+                        "lastUpdateTime": "2020-01-27T08:49:22Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:45Z",
+                        "lastUpdateTime": "2020-01-27T08:49:45Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "False",
+                        "type": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:45Z",
+                        "lastUpdateTime": "2020-01-27T08:49:45Z",
+                        "message": "Trial has failed",
+                        "reason": "TrialFailed",
+                        "status": "True",
+                        "type": "Failed"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:22Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:19Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-vx8t62zz",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4886587",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-vx8t62zz",
+                "uid": "1de976d2-e713-4bdc-af80-8851d100c57a"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "414"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.43272433077493233"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-vx8t62zz\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=414\"\n              - \"--dropout=0.43272433077493233\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=414\"\n              - \"--dropout=0.43272433077493233\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:22Z",
+                        "lastUpdateTime": "2020-01-27T08:49:22Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:44Z",
+                        "lastUpdateTime": "2020-01-27T08:49:44Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "True",
+                        "type": "Running"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:22Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:50:15Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-w9hb5m8m",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4887241",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-w9hb5m8m",
+                "uid": "afba9744-f5b1-4b5d-9fa4-4e08c7fe6911"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "21"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.27316987536361736"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-w9hb5m8m\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=21\"\n              - \"--dropout=0.27316987536361736\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=21\"\n              - \"--dropout=0.27316987536361736\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:50:15Z",
+                        "lastUpdateTime": "2020-01-27T08:50:15Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:50:18Z",
+                        "lastUpdateTime": "2020-01-27T08:50:18Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "True",
+                        "type": "Running"
+                    }
+                ],
+                "startTime": "2020-01-27T08:50:15Z"
+            }
+        },
+        {
+            "apiVersion": "kubeflow.org/v1alpha3",
+            "kind": "Trial",
+            "metadata": {
+                "creationTimestamp": "2020-01-27T08:49:42Z",
+                "finalizers": [
+                    "clean-metrics-in-db"
+                ],
+                "generation": 1,
+                "labels": {
+                    "experiment": "katib-distributed-example"
+                },
+                "name": "katib-distributed-example-xfxvh72d",
+                "namespace": "evaluation",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "kubeflow.org/v1alpha3",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Experiment",
+                        "name": "katib-distributed-example",
+                        "uid": "7011d96e-f7a5-4966-9ac2-0d55612df0b2"
+                    }
+                ],
+                "resourceVersion": "4886845",
+                "selfLink": "/apis/kubeflow.org/v1alpha3/namespaces/evaluation/trials/katib-distributed-example-xfxvh72d",
+                "uid": "99f1f463-f0ac-40b3-9b18-f8e5e4b88284"
+            },
+            "spec": {
+                "metricsCollector": {
+                    "collector": {
+                        "kind": "StdOut"
+                    }
+                },
+                "objective": {
+                    "goal": 0,
+                    "objectiveMetricName": "entropy",
+                    "type": "minimize"
+                },
+                "parameterAssignments": [
+                    {
+                        "name": "--units",
+                        "value": "27"
+                    },
+                    {
+                        "name": "--dropout",
+                        "value": "0.7912010449962588"
+                    },
+                    {
+                        "name": "--optimizer",
+                        "value": "adam"
+                    }
+                ],
+                "runSpec": "apiVersion: \"kubeflow.org/v1\"\nkind: TFJob\nmetadata:\n  name: katib-distributed-example-xfxvh72d\n  namespace: evaluation\nspec:\n tfReplicaSpecs:\n  PS:\n    replicas: 1\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=27\"\n              - \"--dropout=0.7912010449962588\"\n              - \"--optimizer=adam\"\n  Worker:\n    replicas: 2\n    restartPolicy: Never\n    template:\n      metadata:\n        labels:\n          chaos: enabled\n      spec:\n        containers:\n          - name: tensorflow\n            image: gaocegege/katib-tf-example:v1.0.0\n            resources:\n              limit:\n                cpu: 500m\n                memory: 500Mi\n              requests:\n                cpu: 100m\n                memory: 100Mi\n            command:\n              - \"python\"\n              - \"/katib-ps-worker.py\"\n              - \"--train_steps\"\n              - \"5000\"\n              - \"--units=27\"\n              - \"--dropout=0.7912010449962588\"\n              - \"--optimizer=adam\""
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:43Z",
+                        "lastUpdateTime": "2020-01-27T08:49:43Z",
+                        "message": "Trial is created",
+                        "reason": "TrialCreated",
+                        "status": "True",
+                        "type": "Created"
+                    },
+                    {
+                        "lastTransitionTime": "2020-01-27T08:49:54Z",
+                        "lastUpdateTime": "2020-01-27T08:49:54Z",
+                        "message": "Trial is running",
+                        "reason": "TrialRunning",
+                        "status": "True",
+                        "type": "Running"
+                    }
+                ],
+                "startTime": "2020-01-27T08:49:43Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}

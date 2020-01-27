@@ -5,13 +5,13 @@ metadata:
   namespace: chaos-testing
 spec:
   action: pod-failure
-  duration: 5s
+  duration: 5m
   selector:
     namespaces:
       - evaluation
     labelSelectors:
       chaos: enabled
   scheduler:
-    cron: "@every 2m"
+    cron: "@every 10m"
   mode: fixed-percent
-  value: "5"
+  value: "100"

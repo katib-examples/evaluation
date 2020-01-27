@@ -86,6 +86,7 @@ rules:
   - kubeflow.org
   resources:
   - tfjobs
+  - tfjobs/status
   - pytorchjobs
   verbs:
   - "*"
