@@ -2,3 +2,6 @@
 __pycache__/
 *.db
 tf-operator/tf-operator
+kill.R
+.Rhistory
+*.pdf
