@@ -7,7 +7,7 @@
 - Not Kubernetes Native
     - Cannot set trials and other configs using YAML.
 - Only supports Python
-- Need to import optuna in the code, be invasive
+- Need to import Optuna in the code, be invasive
 
 ```
 cd optuna
