@@ -1,7 +1,7 @@
 .vscode/
 __pycache__/
 *.db
-tf-operator/tf-operator
+fault-tolerance/tf-operator/tf-operator
 kill.R
 .Rhistory
 *.pdf
