@@ -19,5 +19,7 @@ or
 kubectl apply -f portability-cloud.yaml
 ```
 
-3. Navigate to the Katib console (see [this link](https://www.kubeflow.org/docs/components/hyperparameter-tuning/experiment/#running-the-experiment-from-the-katib-ui)) and view results.
+3. Navigate to the Katib console (see [this link](https://www.kubeflow.org/docs/components/hyperparameter-tuning/experiment/#running-the-experiment-from-the-katib-ui)) and view results. A sample graph is given below
+
+<img src="https://github.com/katib-examples/evaluation/blob/master/docs/portability.png" width="400" height="400">
 
