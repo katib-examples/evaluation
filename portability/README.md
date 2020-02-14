@@ -2,9 +2,9 @@
 
 Make sure you have [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed.
 
-For local installation of Kubeflow, follow instructions [here](https://www.kubeflow.org/docs/started/workstation/).
+To install Minikube on your local machine, follow instructions [here](https://kubernetes.io/docs/tasks/tools/install-minikube/).
 
-For GCP installation, start [here](https://www.kubeflow.org/docs/gke/deploy/).
+To install Katib, start [here](https://github.com/kubeflow/katib/blob/master/scripts/v1alpha3/deploy.sh).
 
 ## Running the examples
 
