@@ -25,7 +25,7 @@ docker build -t gaocegege/katib-tf-example:v1.0.0 .
 kubectl apply -f ./kubernetes-distributed.yaml
 ```
 
-4. Once all experiments are started, start chaos engineering.
+4. Once all experiments are started, start chaos engineering experiments to simulate trial failures and kills.
 
 For Trial failure experiment, 
 ```bash
@@ -42,6 +42,5 @@ kubectl apply -f ./pod-failures.yaml
 
 <p float="left">
 <img src="https://github.com/katib-examples/evaluation/blob/master/docs/chaos-1.png" width="300" height="300">
-<img src="https://github.com/katib-examples/evaluation/blob/master/docs/chaos-2.png" width="300" height="300">
 <img src="https://github.com/katib-examples/evaluation/blob/master/docs/chaos-kill.png" width="300" height="300">
 </p>
