@@ -22,4 +22,4 @@ sh test-autoscalability.sh
 
 4. Graphs are plotted with the collected data(Pending Trial CPUs, Running Trial CPUs and Total Cluster CPUs). A sample graph is given below.
 
-<img src="https://github.com/katib-examples/evaluation/blob/master/docs/autoscale.png" width="400" height="400">
+<img src="https://github.com/katib-examples/evaluation/blob/master/images/autoscale.png" width="400" height="400">

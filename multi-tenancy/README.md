@@ -29,4 +29,4 @@ kubectl apply -f random-example-user2.yaml
 
 4. Navigate to the Katib console (see [this link](https://www.kubeflow.org/docs/components/hyperparameter-tuning/experiment/#running-the-experiment-from-the-katib-ui)) and view trial results. Plot start and completion time of all trials. A sample graph is follows 
 
-<img src="https://github.com/katib-examples/evaluation/blob/master/docs/multi-tenancy.png" width="400" height="400">
+<img src="https://github.com/katib-examples/evaluation/blob/master/images/multi-tenancy.png" width="400" height="400">

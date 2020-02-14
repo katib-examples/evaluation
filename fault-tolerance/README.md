@@ -36,11 +36,11 @@ kubectl apply -f ./pod-failures.yaml
 For Trail kill experiment,
 ```bash
 cd chaos
-kubectl apply -f ./pod-failures.yaml
+kubectl apply -f ./pod-kills.yaml
 ```
 5. Plot the graph with objective metric values collected over varying failure and kill rates. Sample graphs are given below
 
 <p float="left">
-<img src="https://github.com/katib-examples/evaluation/blob/master/docs/chaos-1.png" width="300" height="300">
-<img src="https://github.com/katib-examples/evaluation/blob/master/docs/chaos-kill.png" width="300" height="300">
+<img src="https://github.com/katib-examples/evaluation/blob/master/images/chaos-1.png" width="300" height="300">
+<img src="https://github.com/katib-examples/evaluation/blob/master/images/chaos-kill.png" width="300" height="300">
 </p>
